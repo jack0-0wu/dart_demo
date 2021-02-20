@@ -63,42 +63,89 @@
 //     sendPort.send('RANDOM STRING:$i');
 //   });
 // }
+// import 'dart:async';
+// import 'dart:isolate';
+//
+// main() async {
+//   var receivePort = new ReceivePort();
+//   final isolate = await Isolate.spawn(echo, receivePort.sendPort,paused: true);
+//   await isolate.resume(receivePort.sendPort);
+//   // The 'echo' isolate sends it's SendPort as the first message
+//   var sendPort = await receivePort.first;
+//
+//   var msg = await sendReceive(sendPort, "foo");
+//   print('received $msg');
+//   msg = await sendReceive(sendPort, "bar");
+//   print('received $msg');
+// }
+//
+// // the entry point for the isolate
+// echo(SendPort sendPort) async {
+//   // Open the ReceivePort for incoming messages.
+//   var port = new ReceivePort();
+//
+//   // Notify any other isolates what port this isolate listens to.
+//   sendPort.send(port.sendPort);
+//
+//   await for (var msg in port) {
+//     var data = msg[0];
+//     SendPort replyTo = msg[1];
+//     replyTo.send(data);
+//     if (data == "bar") port.close();
+//   }
+// }
+//
+// /// sends a message on a port, receives the response,
+// /// and returns the message
+// Future sendReceive(SendPort port, msg) {
+//   ReceivePort response = new ReceivePort();
+//   port.send([msg, response.sendPort]);
+//   return response.first;
+// }
 import 'dart:async';
+import 'dart:io';
 import 'dart:isolate';
 
-main() async {
-  var receivePort = new ReceivePort();
-  await Isolate.spawn(echo, receivePort.sendPort);
+// void main() async {
+//   print("Starting isolate");
+//   Isolate isolate;
+//   ReceivePort receivePort = ReceivePort();
+//
+//   isolate = await Isolate.spawn(run, receivePort.sendPort,paused: true);
+//   print("pausing");
+//   // Capability cap = isolate.pause(isolate.pauseCapability);
+//   sleep(Duration(seconds: 5));
+//   print("Resuming");
+//   isolate.resume(isolate.pauseCapability);
+// }
+//
+// void run(SendPort sendPort) {
+//   sleep(Duration(seconds: 2));`
+//   print("Woke up, 1");
+//   sleep(Duration(seconds: 2));
+//   print("Woke up, 2");
+//   sleep(Duration(seconds: 2));
+//   print("Woke up, 3");
+//   sleep(Duration(seconds: 2));
+//   print("Woke up, 4");
+//   sleep(Duration(seconds: 2));
+//   print("Woke up, 5");
+// }
+Isolate isolate;
 
-  // The 'echo' isolate sends it's SendPort as the first message
-  var sendPort = await receivePort.first;
-
-  var msg = await sendReceive(sendPort, "foo");
-  print('received $msg');
-  msg = await sendReceive(sendPort, "bar");
-  print('received $msg');
+void main() async {
+  ReceivePort receivePort = ReceivePort();
+  isolate = await Isolate.spawn(isolateFunc, "message");
+  isolate.kill(priority: 1);
+  isolate.pause(isolate.pauseCapability);
+  isolate.resume(isolate.pauseCapability);
 }
+// void main() {
+//   Isolate.spawn(isolateFunc, "message").then((value) {
+//     isolate = value;
+//   });
+// }
 
-// the entry point for the isolate
-echo(SendPort sendPort) async {
-  // Open the ReceivePort for incoming messages.
-  var port = new ReceivePort();
+isolateFunc(message) {}
 
-  // Notify any other isolates what port this isolate listens to.
-  sendPort.send(port.sendPort);
-
-  await for (var msg in port) {
-    var data = msg[0];
-    SendPort replyTo = msg[1];
-    replyTo.send(data);
-    if (data == "bar") port.close();
-  }
-}
-
-/// sends a message on a port, receives the response,
-/// and returns the message
-Future sendReceive(SendPort port, msg) {
-  ReceivePort response = new ReceivePort();
-  port.send([msg, response.sendPort]);
-  return response.first;
-}
+// 导入isolate包
