@@ -131,21 +131,50 @@ import 'dart:isolate';
 //   sleep(Duration(seconds: 2));
 //   print("Woke up, 5");
 // }
-Isolate isolate;
-
-void main() async {
-  ReceivePort receivePort = ReceivePort();
-  isolate = await Isolate.spawn(isolateFunc, "message");
-  isolate.kill(priority: 1);
-  isolate.pause(isolate.pauseCapability);
-  isolate.resume(isolate.pauseCapability);
-}
+// Isolate isolate;
+//
+// void main() async {
+//   ReceivePort receivePort = ReceivePort();
+//   isolate = await Isolate.spawn(isolateFunc, "message");
+//   isolate.kill(priority: 1);
+//   receivePort.listen((message) { });
+//   StreamController<int>().stream.listen((event) { });
+//
+//   receivePort.sendPort.send(message);
+//   isolate.pause(isolate.pauseCapability);
+//   isolate.resume(isolate.pauseCapability);
+// }
 // void main() {
 //   Isolate.spawn(isolateFunc, "message").then((value) {
 //     isolate = value;
 //   });
 // }
 
-isolateFunc(message) {}
-
+// isolateFunc(message) {}
 // 导入isolate包
+
+void main() async {
+  // 创建一个ReceivePort用于接收消息
+  ReceivePort recv = ReceivePort();
+
+  // 创建一个Isolate，泛型参数为SendPort，入口函数为subTask
+  // subTask入口函数的参数为SendPort类型，因此spawn第二个参数，传入recv的sendPort对象。
+  // Isolate.spawn<ReceivePort>(subTask, recv);
+  // Isolate.spawn<ReceivePort>(subTask2, recv);
+  var a  = {"recv":recv};
+  Isolate.spawn(subTask,a);
+}
+void subTask(message){
+  print(message);
+}
+// // Isolate入口函数定义，接收一个SendPort对象作为参数
+// void subTask( ReceivePort port) {
+//   port.listen((message) {
+//     print(message);
+//   });
+// }
+//
+// void subTask2( ReceivePort port) {
+//   // 使用SendPort发送一条字符串消息
+//   port.sendPort.send("subTask2 Result.");
+// }
