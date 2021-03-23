@@ -14,15 +14,15 @@
 //  print("DONE");
 //}
 
-Stream<int> numbersDownFrom(int n) async* {
-  if (n > 2) {
-    yield n;
-    yield* numbersDownFrom(n - 1);
+void main() {
+  for (int i in numbersDownFrom(3)) {
+    print('$i');
   }
 }
 
-main() async {
-  await for (int i in numbersDownFrom(5)) {
-    print('$i');
+Iterable<int> numbersDownFrom(int n) sync* {
+  if (n != 0) {
+    yield n;
+    yield* numbersDownFrom(n - 1);
   }
 }
