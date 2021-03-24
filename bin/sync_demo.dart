@@ -34,7 +34,7 @@ void main() async{
   Stream<int> sequence = naturalsTo(5);
 
   print("Starting...");
-
+ 
   await for (int value in sequence) {
     print(value);
   }
