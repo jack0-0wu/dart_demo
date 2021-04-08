@@ -76,11 +76,11 @@
 // var b = const [1,2];
 // var a =  [1,2];
 // var b =  [1,2];
-const a =  [1,2];
-const b =  [1,2];
-void main(){
-  print(identical(a,b));
-}
+// const a =  [1,2];
+// const b =  [1,2];
+// void main(){
+//   print(identical(a,b));
+// }
 // const list = [1];
 //
 // late final  b;
@@ -96,3 +96,34 @@ void main(){
 //   a = [2];
 //   print(a);
 // }
+//
+// class A {
+//   final a, b;
+//   const A(this.a, this.b);
+// }
+//
+// void main() {
+//   var a = const A(1, 2);
+//   var b = const A(1, 2);
+//   print(identical(a, b));
+//   print(a == b);
+// }
+final a = getNum(0);
+var b = getNum(1);
+
+int getNum(int num) {
+  print(num);
+  return 0;
+}
+
+void main() {
+  // print(a);
+  // print(b);
+  var test = A();
+}
+
+class A {
+  static final a = getNum(0);
+  late var b = getNum(1);
+  var c = getNum(2);
+}
