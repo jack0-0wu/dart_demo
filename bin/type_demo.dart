@@ -1,4 +1,4 @@
-late String description;
+//late String description;
 void main() {
   // int a = 1;
   // double d = 2;
@@ -37,20 +37,33 @@ void main() {
 // print(a);
 // Test1 s = Test1();
 // s.run();
-description = 'Feijoada!';
-print(description);
+//description = 'Feijoada!';
+//print(description);
+Test test1 = new Test();
+Test test2 = new Test();
+var a = test1;
+var b  = a;
+print(identical(b,test1));
+print(identical(b,test2));
+test1._num = 10;
+print(b._num);
+//  Test test = new Test();
+//  testFunc(test);
+//  print(test._num);
 }
-final name = 'Bob';
+//final name = 'Bob';
 
-
+//testFunc(Test data){
+//  print(data._num);
+//  data._num = 10;
+//}
 //
 // countLines() {
 //   return 0;
 // }
-// class _Test{
-//    int _a = 0;
-//
-// }
+ class Test{
+    int _num = 0;
+ }
 // class Test1{
 //   run(){
 //     _Test s = _Test();
