@@ -1,20 +1,20 @@
 //late String description;
-void main() {
-  // int a = 1;
-  // double d = 2;
-  //
-  // print(a.toDouble().runtimeType);
-  // print(d.toInt().runtimeType);
-  // int.parse("source");
-  // double.parse("source");
-  // num.parse("input");
-  // num n = 5;
-  // print(n.runtimeType);
-  // n= 5.5;
-  // print(n.runtimeType);
-  // print(num.parse("1.5") is double);
-  // double c = 2.0123456789012345678901234567890123456789012345678901234567890123;
-  // print(c);
+// void main() {
+// int a = 1;
+// double d = 2;
+//
+// print(a.toDouble().runtimeType);
+// print(d.toInt().runtimeType);
+// int.parse("source");
+// double.parse("source");
+// num.parse("input");
+// num n = 5;
+// print(n.runtimeType);
+// n= 5.5;
+// print(n.runtimeType);
+// print(num.parse("1.5") is double);
+// double c = 2.0123456789012345678901234567890123456789012345678901234567890123;
+// print(c);
 //  List test;
 //  test = ["1","2","3"];
 //  print(test);
@@ -39,18 +39,18 @@ void main() {
 // s.run();
 //description = 'Feijoada!';
 //print(description);
-Test test1 = new Test();
-Test test2 = new Test();
-var a = test1;
-var b  = a;
-print(identical(b,test1));
-print(identical(b,test2));
-test1._num = 10;
-print(b._num);
+// Test test1 = new Test();
+// Test test2 = new Test();
+// var a = test1;
+// var b  = a;
+// print(identical(b,test1));
+// print(identical(b,test2));
+// test1._num = 10;
+// print(b._num);
 //  Test test = new Test();
 //  testFunc(test);
 //  print(test._num);
-}
+// }
 //final name = 'Bob';
 
 //testFunc(Test data){
@@ -61,9 +61,9 @@ print(b._num);
 // countLines() {
 //   return 0;
 // }
- class Test{
-    int _num = 0;
- }
+//  class Test{
+//     int _num = 0;
+//  }
 // class Test1{
 //   run(){
 //     _Test s = _Test();
@@ -71,4 +71,28 @@ print(b._num);
 //     s._a = 10;
 //     print(s._a);
 //   }
+// }
+// var a = const [1,2];
+// var b = const [1,2];
+// var a =  [1,2];
+// var b =  [1,2];
+const a =  [1,2];
+const b =  [1,2];
+void main(){
+  print(identical(a,b));
+}
+// const list = [1];
+//
+// late final  b;
+//
+// void main() {
+//   b = 1;
+//   b = 2;
+// }
+// class Test{
+// }
+// var a = const[1,2];
+// void main(){
+//   a = [2];
+//   print(a);
 // }
