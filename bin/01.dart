@@ -97,8 +97,8 @@ void main() {
 // late String test;
 
 //示例10
-class A {
-  final a, b;
-
-  const A(this.a, this.b);
-}
+// class A {
+//   final a, b;
+//
+//   const A(this.a, this.b);
+// }
