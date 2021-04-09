@@ -97,33 +97,36 @@
 //   print(a);
 // }
 //
-// class A {
-//   final a, b;
-//   const A(this.a, this.b);
-// }
+class A {
+  var  a, b;
+  static const c = 0;
+   A(this.a, this.b);
+}
+const a = 1;
+void main() {
+  final a =   A(1, 2);
+  a.a = 100;
+  print(a.a);
+  // var b =  A(1, 2);
+  // print(identical(a, b));
+  // print(a == b);
+}
+// final a = getNum(0);
+// var b = getNum(1);
 //
-// void main() {
-//   var a = const A(1, 2);
-//   var b = const A(1, 2);
-//   print(identical(a, b));
-//   print(a == b);
-// }
-final a = getNum(0);
-var b = getNum(1);
-
 int getNum(int num) {
   print(num);
   return 0;
 }
-
-void main() {
-  // print(a);
-  // print(b);
-  var test = A();
-}
-
-class A {
-  static final a = getNum(0);
-  late var b = getNum(1);
-  var c = getNum(2);
-}
+//
+// void main() {
+//   // print(a);
+//   // print(b);
+//   var test = A();
+// }
+//
+// class A {
+//   static final a = getNum(0);
+//   late var b = getNum(1);
+//   var c = getNum(2);
+// }
