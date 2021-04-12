@@ -61,7 +61,7 @@ void main() {
   //
   // baz = [ 42 ]; //错误：无法为常量变量分配值。
   //
-  // const Object i = 3; // 一个静态的object对象
+  // const Object i = 3; // 一个object类型的对象
   // const list = [i as int]; // 类型转换
   // const map = {if (i is int) i: "int"}; // 集合里面会讲这种用法
   // const set = {if (list is List<int>) ...list}; // 集合里面会讲这种用法
